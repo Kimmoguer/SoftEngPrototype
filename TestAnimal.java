@@ -1,39 +1,38 @@
 public class TestAnimal {
     public static void main(String[] args) {
         AnimalRegistry registry = new AnimalRegistry();
-
-        Cow cow1 = registry.createCow("Cow 1");
-        Cow cow2 = registry.createCow("Cow 2");
-
-        Sheep sheep1 = registry.createSheep("Sheep 1");
-        Sheep sheep2 = registry.createSheep("Sheep 2");
-
-        Horse horse1 = registry.createHorse("Horse 1");
-        Horse horse2 = registry.createHorse("Horse 2");
-
-        System.out.println("=== PROTOTYPE DESIGN PATTERN ===");
-
-        System.out.println(cow1);
-        cow1.makeSound();
-        System.out.println();
-
-        System.out.println(cow2);
-        cow2.makeSound();
-        System.out.println();
-
-        System.out.println(sheep1);
-        sheep1.makeSound();
-        System.out.println();
-
-        System.out.println(sheep2);
-        sheep2.makeSound();
-        System.out.println();
-
-        System.out.println(horse1);
-        horse1.makeSound();
-        System.out.println();
-
-        System.out.println(horse2);
-        horse2.makeSound();
+        
+        // Create first set of animals
+        Animal sheep1 = registry.createSheep();
+        ((Sheep) sheep1).setName("Dolly");
+        
+        Animal cow1 = registry.createCow();
+        ((Cow) cow1).setSound("Moo");
+        
+        Animal horse1 = registry.createHorse();
+        ((Horse) horse1).setColor("Brown");
+        
+        // Display first set
+        System.out.println(sheep1.getType() + " name is " + ((Sheep) sheep1).getName());
+        System.out.println(cow1.getType() + " makes sound " + ((Cow) cow1).getSound());
+        System.out.println(horse1.getType() + " has color " + ((Horse) horse1).getColor());
+        
+        // Cloning animals message
+        System.out.println("\nCloning animals...\n");
+        
+        // Create second set of animals (clones)
+        Animal sheep2 = registry.createSheep();
+        ((Sheep) sheep2).setName("Shaun");
+        
+        Animal cow2 = registry.createCow();
+        ((Cow) cow2).setSound("Moo Moo");
+        
+        Animal horse2 = registry.createHorse();
+        ((Horse) horse2).setColor("Black");
+        
+        // Display second set
+        System.out.println(sheep2.getType() + " name is " + ((Sheep) sheep2).getName());
+        System.out.println(cow2.getType() + " makes sound " + ((Cow) cow2).getSound());
+        System.out.println(horse2.getType() + " has color " + ((Horse) horse2).getColor());
     }
 }
